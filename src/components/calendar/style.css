@@ -1,0 +1,9 @@
+.main-wrapper .date-container:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.days {
+    font-size: 1.8rem;
+}

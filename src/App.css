@@ -6,6 +6,7 @@
 html {
   font-size: 10px;
   font-family: 'Montserrat', sans-serif;
+  color: #fff;
 }
 
 .container {
@@ -20,6 +21,6 @@ html {
 
 .calendar-wrapper {
   width: 500px;
-  height: 500px;
+  height: auto;
   background-color: rgba(0, 0, 0, 0.7);
 }
