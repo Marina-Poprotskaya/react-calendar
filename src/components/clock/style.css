@@ -1,0 +1,7 @@
+.currentTime {
+    display: flex;
+    align-items: center;
+    height: 60%;
+    font-size: 6rem;
+    color: rgb(255, 255, 255);
+}

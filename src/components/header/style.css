@@ -1,0 +1,19 @@
+.header {
+    height: 150px;
+    border-bottom: 1px solid rgb(117, 117, 117);
+}
+
+.date-container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 10px 0;
+    height: 100%;
+}
+
+.currentDate {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    color: rgb(110, 214, 255);
+    font-weight: 200;
+}
