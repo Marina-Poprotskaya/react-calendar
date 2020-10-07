@@ -5,25 +5,25 @@ import "./style.css";
 export default function Main() {
   const getFormattedMonths = () => {
     const months = [
-      "Январь",
-      "Февраль",
-      "Март",
-      "Апрель",
-      "Май",
-      "Июнь",
-      "Июль",
-      "Август",
-      "Сентябрь",
-      "Октябрь",
-      "Ноябрь",
-      "Декабрь",
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ];
     const date = new Date();
     const currentDate = `${months[date.getMonth()]} ${date.getFullYear()}`;
     return currentDate;
   };
 
-  const daysOfWeeks = ["пн", "вт", "ср", "чт", "пт", "сб", "вс"];
+  const daysOfWeeks = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 
   const renderDaysOfWeek = () => {
     const elements = daysOfWeeks.map((item, index) => {
