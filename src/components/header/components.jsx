@@ -1,10 +1,9 @@
 import React from "react";
 import Clock from "../clock/component";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 import "./style.css";
 
-export default function Header({onFormaredMonth}) {
-
+export default function Header({ onFormaredMonth }) {
   return (
     <header className="header">
       <div className="date-container">
@@ -17,4 +16,4 @@ export default function Header({onFormaredMonth}) {
 
 Header.propTypes = {
   onFormaredMonth: PropTypes.func,
-}
+};

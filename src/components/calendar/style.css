@@ -1,13 +1,13 @@
 .main-wrapper .date-container:nth-child(2) {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .days {
-    font-size: 1.8rem;
+  font-size: 1.8rem;
 }
 
 .numbers:hover {
-    outline: 3px solid #666;
+  outline: 3px solid #666;
 }
