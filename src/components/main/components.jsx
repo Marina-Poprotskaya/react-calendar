@@ -1,27 +1,9 @@
 import React from "react";
 import Calendar from "../calendar/components";
+import PropTypes from 'prop-types';
 import "./style.css";
 
-export default function Main() {
-  const getFormattedMonths = () => {
-    const months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    const date = new Date();
-    const currentDate = `${months[date.getMonth()]} ${date.getFullYear()}`;
-    return currentDate;
-  };
+export default function Main(props) {
 
   const daysOfWeeks = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 
@@ -36,15 +18,25 @@ export default function Main() {
     <div className="main-wrapper">
       <div className="date-container">
         <div className="current-month">
-          <div className="month">{getFormattedMonths()}</div>
+          <div className="month">{props.onSearchingMonth()}</div>
           <div className="arrow-wrapper">
-            <div className="arrow arrow-up"></div>
-            <div className="arrow arrow-down"></div>
+            <div className="arrow arrow-up" onClick = {props.onPreviousMonth}></div>
+            <div className="arrow arrow-down" onClick = {props.onNextMonth}></div>
           </div>
         </div>
         <div className="days-of-week-wrapper">{renderDaysOfWeek()}</div>
       </div>
-      <Calendar />
+      <Calendar 
+      month = {props.month} 
+      year = {props.year}/>
     </div>
   );
+}
+
+
+Main.propTypes = {
+  onSearchingMonth: PropTypes.func,
+  renderDaysOfWeek: PropTypes.func,
+  month: PropTypes.number,
+  year: PropTypes.number,
 }

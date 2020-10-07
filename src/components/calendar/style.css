@@ -7,3 +7,7 @@
 .days {
     font-size: 1.8rem;
 }
+
+.numbers:hover {
+    outline: 3px solid #666;
+}

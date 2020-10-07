@@ -16,4 +16,5 @@
     font-size: 1.8rem;
     color: rgb(110, 214, 255);
     font-weight: 200;
+    text-transform: lowercase;
 }

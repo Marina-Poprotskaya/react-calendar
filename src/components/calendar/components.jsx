@@ -1,15 +1,15 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./style.css";
 
-export default function Calendar() {
+export default function Calendar({month, year}) {
 
     const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth();
+    const curMonth = date.getMonth();
+
     const currentDay = date.getDate();
 
     const previousMonth = month-1;
-    // const nextMonth = month+1;
 
     const getDaysInMonth = (year, month) => {
         return new Date(year, month+1, 0).getDate();
@@ -68,10 +68,10 @@ export default function Calendar() {
         }
 
         const getColorOfCurrentDay = () => {
-            return index === indexOfCurrentDayInArrOfCells ? 'rgb(0, 149, 218)' : '';
+            return index === indexOfCurrentDayInArrOfCells && curMonth === month ? 'rgb(0, 149, 218)' : '';
         }
          
-          return <div style = {{color: getColor(), background: getColorOfCurrentDay()}} className='days' key={index}>{getContent()}</div>;
+          return <div style = {{color: getColor(), background: getColorOfCurrentDay()}} className='days numbers' key={index}>{getContent()}</div>;
         });
         return elements;
       }; 
@@ -82,3 +82,9 @@ export default function Calendar() {
         </div>  
     )
 }
+
+
+Calendar.propTypes = {
+    month: PropTypes.number,
+    year: PropTypes.number,
+  }

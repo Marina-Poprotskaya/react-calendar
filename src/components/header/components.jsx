@@ -1,36 +1,20 @@
 import React from "react";
 import Clock from "../clock/component";
+import PropTypes from 'prop-types'
 import "./style.css";
 
-export default function Header() {
-  const getFormattedDate = () => {
-    const months = [
-      "января",
-      "февраля",
-      "марта",
-      "апреля",
-      "мая",
-      "июня",
-      "июля",
-      "августа",
-      "сентября",
-      "октября",
-      "ноября",
-      "декабря",
-    ];
-    const date = new Date();
-    const currentDate = `${date.getDate()} ${
-      months[date.getMonth()]
-    } ${date.getFullYear()}г.`;
-    return currentDate;
-  };
+export default function Header({onFormaredMonth}) {
 
   return (
     <header className="header">
       <div className="date-container">
         <Clock />
-        <div className="currentDate">{getFormattedDate()}</div>
+        <div className="currentDate">{onFormaredMonth()}</div>
       </div>
     </header>
   );
+}
+
+Header.propTypes = {
+  onFormaredMonth: PropTypes.func,
 }
