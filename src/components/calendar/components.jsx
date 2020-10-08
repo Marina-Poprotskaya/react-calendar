@@ -45,7 +45,8 @@ export default function Calendar({ month, year }) {
 
       const getColorOfCurrentDay = () => {
         const curMonth = date.getMonth();
-        return index === (currentDay+firstDayIndex-1) && curMonth === month
+        const curYear = date.getFullYear();
+        return index === (currentDay+firstDayIndex-1) && curMonth === month && curYear === year
           ? "rgb(0, 149, 218)"
           : "";
       };
