@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Header from "./components/header/components";
 import Main from "./components/main/components";
-import { months } from './constants';
+import { months, numberOfCells } from "./constants";
 
 import "./App.css";
 
@@ -37,6 +37,38 @@ function App() {
     return `${months[month]} ${year}`;
   };
 
+  const currentDay = date.getDate();
+  const previousMonth = month - 1;
+
+  const getDaysInMonth = (year, month) => {
+    return new Date(year, month + 1, 0).getDate();
+  };
+
+  const daysInCurrentMonth = getDaysInMonth(year, month);
+  const daysInPreviousMonth = getDaysInMonth(year, previousMonth);
+  const firstDayIndex = new Date(year, month).getDay();
+  const lastDayIndex = daysInCurrentMonth + firstDayIndex - 1;
+  const arrayOfCurrentDays = [...Array(daysInCurrentMonth)].map((_, i) => ++i);
+  const arrOfPrevDaysForCalendar = [...Array(firstDayIndex)].map(
+    (_, i) => (i += daysInPreviousMonth - (firstDayIndex - 1))
+  );
+  const arrayOfNextDaysForCalendar = [
+    ...Array(numberOfCells - lastDayIndex - 1),
+  ].map((_, i) => ++i);
+
+  const isActualDay = useCallback(
+    (index) => {
+      const actualMonth = date.getMonth();
+      const actualYear = date.getFullYear();
+      return index === currentDay - 1 &&
+        actualMonth === month &&
+        actualYear === year
+        ? true
+        : false;
+    },
+    [month, currentDay, year, date]
+  );
+
   return (
     <div className="container">
       <div className="calendar-wrapper">
@@ -47,6 +79,10 @@ function App() {
           onNextMonth={handleNextMonth}
           month={month}
           year={year}
+          arrayOfCurrentDays={arrayOfCurrentDays}
+          arrOfPrevDaysForCalendar={arrOfPrevDaysForCalendar}
+          arrayOfNextDaysForCalendar={arrayOfNextDaysForCalendar}
+          onActualDay={isActualDay}
         />
       </div>
     </div>

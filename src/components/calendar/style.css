@@ -11,3 +11,15 @@
 .numbers:hover {
   outline: 3px solid #666;
 }
+
+.not-active {
+  color: rgba(128, 128, 128, 0.842);
+}
+
+.active {
+  color: #fff;
+}
+
+.actual-day {
+  background: rgb(0, 149, 218);
+}
