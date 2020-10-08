@@ -1,19 +1,20 @@
 import React from "react";
 import Calendar from "../calendar/components";
 import PropTypes from "prop-types";
+import { daysOfWeeks } from '../../constants';
 import "./style.css";
 
 export default function Main(props) {
   const renderDaysOfWeek = () => {
-    const daysOfWeeks = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
-    const elements = daysOfWeeks.map((item, index) => {
+  
+    const dayOfWeek = daysOfWeeks.map((item, index) => {
       return (
-        <div className="days" key={index}>
+        <div className="day" key={index}>
           {item}
         </div>
       );
     });
-    return elements;
+    return dayOfWeek;
   };
 
   return (

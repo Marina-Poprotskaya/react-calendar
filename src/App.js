@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "./components/header/components";
 import Main from "./components/main/components";
+import { months } from './constants';
 
 import "./App.css";
 
@@ -27,20 +28,6 @@ function App() {
       setMonth((prevMonth) => prevMonth + 1);
     }
   };
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
 
   const getActualMonths = () => {
     return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;

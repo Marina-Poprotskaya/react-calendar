@@ -1,13 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { numberOfCells } from "../../constants";
 import "./style.css";
 
 export default function Calendar({ month, year }) {
   const date = new Date();
-  const curMonth = date.getMonth();
-
   const currentDay = date.getDate();
-
   const previousMonth = month - 1;
 
   const getDaysInMonth = (year, month) => {
@@ -16,49 +14,27 @@ export default function Calendar({ month, year }) {
 
   const daysInCurrentMonth = getDaysInMonth(year, month);
   const daysInPreviousMonth = getDaysInMonth(year, previousMonth);
-  const firstDayOfMonth = new Date(year, month).getDay();
-  const firstDayIndex = firstDayOfMonth === 0 ? 6 : firstDayOfMonth - 1;
-  const lastDayIndex = daysInCurrentMonth + firstDayIndex - 1;
-  const numberOfCells = 42;
-  const cellsForDate = new Array(numberOfCells).fill(1, 0, 42);
-  const arrayOfCurrentDays = [];
-  const arrayOfPrevDays = [];
-  const arrayOfNextDays = [];
+  const firstDayIndex = new Date(year, month).getDay();
+  const lastDayIndex = daysInCurrentMonth + firstDayIndex-1;
+  const cellsForDate = [...Array(numberOfCells)];
+  const arrayOfCurrentDays = [...Array(daysInCurrentMonth)].map((_, i) => ++i);
+  const arrOfPrevDaysForCalendar = [...Array(firstDayIndex)].map((_, i) => i += (daysInPreviousMonth-(firstDayIndex-1)));
+  const arrayOfNextDaysForCalendar = [...Array(numberOfCells - lastDayIndex)].map((_, i) => i++);
 
-  for (let i = 1; i <= daysInCurrentMonth; i++) {
-    arrayOfCurrentDays.push(i);
-  }
-
-  for (let i = 1; i < numberOfCells - lastDayIndex; i++) {
-    arrayOfNextDays.push(i);
-  }
-
-  for (let i = 1; i <= daysInPreviousMonth; i++) {
-    arrayOfPrevDays.push(i);
-  }
-  const arrOfPrevDaysForCalendar = arrayOfPrevDays
-    .reverse()
-    .slice(0, firstDayIndex)
-    .reverse();
-
-  const indexOfCurrentDayInArrOfCells =
-    arrayOfCurrentDays.findIndex((el) => el === currentDay) + firstDayIndex;
-
-  const renderDaysOfWeek = () => {
-    const elements = cellsForDate.map((_, index) => {
+  const renderDaysOfMonth = () => {
+    const dayOfMonth = cellsForDate.map((_, index) => {
       const getContent = () => {
-        let content;
         if (index < firstDayIndex) {
-          content = arrOfPrevDaysForCalendar[index];
+          return arrOfPrevDaysForCalendar[index];
         }
         if (index >= firstDayIndex && index <= lastDayIndex) {
-          content = arrayOfCurrentDays[index - firstDayIndex];
+          return arrayOfCurrentDays[index - firstDayIndex];
         }
         if (index > lastDayIndex) {
-          content =
-            arrayOfNextDays[index - numberOfCells + arrayOfNextDays.length];
+          return arrayOfNextDaysForCalendar[
+            index - numberOfCells + arrayOfNextDaysForCalendar.length
+          ];
         }
-        return content;
       };
 
       const getColor = () => {
@@ -68,7 +44,8 @@ export default function Calendar({ month, year }) {
       };
 
       const getColorOfCurrentDay = () => {
-        return index === indexOfCurrentDayInArrOfCells && curMonth === month
+        const curMonth = date.getMonth();
+        return index === (currentDay+firstDayIndex-1) && curMonth === month
           ? "rgb(0, 149, 218)"
           : "";
       };
@@ -76,17 +53,17 @@ export default function Calendar({ month, year }) {
       return (
         <div
           style={{ color: getColor(), background: getColorOfCurrentDay() }}
-          className="days numbers"
+          className="day numbers"
           key={index}
         >
           {getContent()}
         </div>
       );
     });
-    return elements;
+    return dayOfMonth;
   };
 
-  return <div className="date-container">{renderDaysOfWeek()}</div>;
+  return <div className="date-container">{renderDaysOfMonth()}</div>;
 }
 
 Calendar.propTypes = {
