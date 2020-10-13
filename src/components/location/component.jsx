@@ -17,13 +17,11 @@ export default function Location() {
         dispatch(getUserLocation());
         setCity(geolocation.city);
         setCountry(geolocation.country);
-        console.log(1);
     }, [geolocation.city,geolocation.country])
     
     useEffect(() => {
         setCity(location.city);
         setCountry(location.country);
-        console.log(2);
     }, [location.city,location.country])
     
     
