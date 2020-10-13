@@ -10,11 +10,9 @@ export default function Weather() {
     const locationFromStore = useSelector((state) => state.location);
 
     const { city } = locationFromStore;
-    // const { country } = locationFromStore
 
     useEffect(() => {
         dispatch(getWeather(city));
-        console.log(3);
     }, [city])
     
     const WeatherFromStore = useSelector((state) => state.weather);

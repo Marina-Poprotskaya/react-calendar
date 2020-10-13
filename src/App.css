@@ -5,10 +5,10 @@
 
 html {
   font-size: 10px;
-  font-family: 'Montserrat', sans-serif;
 }
 
 .container {
+  font-family: 'Montserrat', sans-serif;
   position: relative;
   display: flex;
   justify-content: center;

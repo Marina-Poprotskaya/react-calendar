@@ -8,7 +8,6 @@ const getWeather = (searchCity) => async (dispatch) => {
     const urlWeather = `https://api.weatherbit.io/v2.0/forecast/daily?city=${searchCity}&days=1&units=M&lang=en&key=${WEATHER_KEY}`;
     const response = await fetch(urlWeather);
     const data = await response.json();
-    console.log('data: ', data);
     const weatherObject = createTemplateObjectWithWeather(data)
     dispatch(weatherSuccess(weatherObject));
   } catch (error) {
