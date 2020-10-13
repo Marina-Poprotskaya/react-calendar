@@ -1,0 +1,9 @@
+.weather {
+    padding: 10px;
+    font-size: 2rem;
+}
+
+.weather-item {
+    padding: 10px;
+    color: rgba(53, 53, 53, 0.664);
+}

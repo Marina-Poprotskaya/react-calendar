@@ -1,19 +1,19 @@
-import React from "react";
-import {Clock} from "../clock/component";
-import PropTypes from "prop-types";
-import "./style.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Clock } from '../clock/component';
+import './style.css';
 
-export default function Header({ onFormaredMonth }) {
+export default function Header({ onFormatedMonth }) {
   return (
     <header className="header">
       <div className="date-container">
         <Clock />
-        <div className="currentDate">{onFormaredMonth()}</div>
+        <div className="currentDate">{onFormatedMonth()}</div>
       </div>
     </header>
   );
 }
 
 Header.propTypes = {
-  onFormaredMonth: PropTypes.func,
+  onFormatedMonth: PropTypes.func,
 };

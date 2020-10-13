@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
-import "./style.css";
+import React, { useState, useEffect } from 'react';
+import './style.css';
 
 export function Clock() {
-  
   const [currentTime, setCurrentTime] = useState(new Date());
   const tick = () => {
     setCurrentTime(new Date());
   };
   useEffect(() => {
-     setInterval(() => tick(), 1000);
+    const clockId = setInterval(() => tick(), 1000);
+    return (() => clearInterval(clockId));
   });
 
   return <div className="currentTime">{currentTime.toLocaleTimeString()}</div>;
 }
-
-

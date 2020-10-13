@@ -1,0 +1,13 @@
+.weather-location-wrapper {
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+.location,
+.weather {
+   width: 48%;
+}

@@ -1,9 +1,11 @@
-import React, { useState, useCallback } from "react";
-import Header from "./components/header/components";
-import Main from "./components/main/components";
-import { months, numberOfCells } from "./constants";
+import React, { useState, useCallback } from 'react';
+import MainCalendar from './components/calendarWrapper/components';
+import { months, numberOfCells } from './constants';
+import NavBar from './components/navbar/components';
+import WeatherAndLocation from './components/weatherAndLocation/component';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
-import "./App.css";
+import './App.css';
 
 function App() {
   const date = new Date();
@@ -29,20 +31,16 @@ function App() {
     }
   };
 
-  const getActualMonths = () => {
-    return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
-  };
+  const getActualMonths = () =>
+    `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
 
-  const getSearchingMonth = () => {
-    return `${months[month]} ${year}`;
-  };
+  const getSearchingMonth = () => `${months[month]} ${year}`;
 
   const currentDay = date.getDate();
   const previousMonth = month - 1;
 
-  const getDaysInMonth = (year, month) => {
-    return new Date(year, month + 1, 0).getDate();
-  };
+  const getDaysInMonth = (year, month) =>
+    new Date(year, month + 1, 0).getDate();
 
   const daysInCurrentMonth = getDaysInMonth(year, month);
   const daysInPreviousMonth = getDaysInMonth(year, previousMonth);
@@ -50,7 +48,7 @@ function App() {
   const lastDayIndex = daysInCurrentMonth + firstDayIndex - 1;
   const arrayOfCurrentDays = [...Array(daysInCurrentMonth)].map((_, i) => ++i);
   const arrOfPrevDaysForCalendar = [...Array(firstDayIndex)].map(
-    (_, i) => (i += daysInPreviousMonth - (firstDayIndex - 1))
+    (_, i) => (i += daysInPreviousMonth - (firstDayIndex - 1)),
   );
   const arrayOfNextDaysForCalendar = [
     ...Array(numberOfCells - lastDayIndex - 1),
@@ -60,32 +58,37 @@ function App() {
     (index) => {
       const actualMonth = date.getMonth();
       const actualYear = date.getFullYear();
-      return index === currentDay - 1 &&
+      return !!(
+        index === currentDay - 1 &&
         actualMonth === month &&
         actualYear === year
-        ? true
-        : false;
+      );
     },
-    [month, currentDay, year, date]
+    [month, currentDay, year, date],
   );
 
   return (
-    <div className="container">
-      <div className="calendar-wrapper">
-        <Header onFormaredMonth={getActualMonths} />
-        <Main
-          onSearchingMonth={getSearchingMonth}
-          onPreviousMonth={handlePreviousMonth}
-          onNextMonth={handleNextMonth}
-          month={month}
-          year={year}
-          arrayOfCurrentDays={arrayOfCurrentDays}
-          arrOfPrevDaysForCalendar={arrOfPrevDaysForCalendar}
-          arrayOfNextDaysForCalendar={arrayOfNextDaysForCalendar}
-          onActualDay={isActualDay}
-        />
+    <Router>
+      <div className="container">
+        <Route path="/" component={NavBar} />
+        <Redirect from="/" to="/weatherAndLocation" />
+        <Route exact path="/weatherAndLocation" component={WeatherAndLocation} />
+        <Route path="/calendarWrapper">
+          <MainCalendar
+            onFormatedMonth={getActualMonths}
+            onSearchingMonth={getSearchingMonth}
+            onPreviousMonth={handlePreviousMonth}
+            onNextMonth={handleNextMonth}
+            month={month}
+            year={year}
+            arrayOfCurrentDays={arrayOfCurrentDays}
+            arrOfPrevDaysForCalendar={arrOfPrevDaysForCalendar}
+            arrayOfNextDaysForCalendar={arrayOfNextDaysForCalendar}
+            onActualDay={isActualDay}
+          />
+        </Route>
       </div>
-    </div>
+    </Router>
   );
 }
 

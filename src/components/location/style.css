@@ -1,0 +1,59 @@
+.location {
+    display: flex;
+    flex-direction: column;
+}
+
+.location-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+    width: 100%;
+    font-size: 1.6rem;
+    margin: 0 0 50px;
+}
+
+.location-input,
+.location-button {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 2px rgb(132, 167, 179);
+}
+
+.location-input {
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+.location-button {
+    background-color: rgb(92, 142, 158);
+    color: #fff;
+    transition: all .3s;
+}
+
+.location-input:active,
+.location-button:active {
+    outline: none;
+}
+
+.location-input:focus {
+    outline: none;
+}
+
+.location-button:hover {
+    background-color: rgb(83, 129, 145);
+    box-shadow: 0 0 4px rgb(132, 167, 179);
+    transition: all .3s;
+}
+
+.location-address {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80px;
+    font-size: 2rem;
+    color: rgba(53, 53, 53, 0.664);
+}

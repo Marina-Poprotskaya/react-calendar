@@ -6,17 +6,19 @@
 html {
   font-size: 10px;
   font-family: 'Montserrat', sans-serif;
-  color: #fff;
 }
 
 .container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 100px;
   width: 80%;
   max-width: 1200px;
   margin: 0 auto;
   height: 100vh;
+  color: #fff;
 }
 
 .calendar-wrapper {

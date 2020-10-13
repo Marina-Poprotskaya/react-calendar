@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./style.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import './style.css';
 
 export default function Calendar(props) {
-  const prevMonthDays = props.arrOfPrevDaysForCalendar.map((el) => (
+  const prevMonthDays = props.arrOfPrevDaysForCalendar.map(el => (
     <div key={`${el}-1`} className="day numbers not-active">
       {el}
     </div>
@@ -13,14 +13,14 @@ export default function Calendar(props) {
     <div
       key={`${el}-2`}
       className={`day numbers active ${
-        props.onActualDay(index) ? "actual-day" : ""
+        props.onActualDay(index) ? 'actual-day' : ''
       }`}
     >
       {el}
     </div>
   ));
 
-  const nextMonthDays = props.arrayOfNextDaysForCalendar.map((el) => (
+  const nextMonthDays = props.arrayOfNextDaysForCalendar.map(el => (
     <div key={`${el}-3`} className="day numbers not-active">
       {el}
     </div>

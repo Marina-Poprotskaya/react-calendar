@@ -1,18 +1,16 @@
-import React from "react";
-import Calendar from "../calendar/components";
-import PropTypes from "prop-types";
-import { daysOfWeeks } from "../../constants";
-import "./style.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Calendar from '../calendar/components';
+import { daysOfWeeks } from '../../constants';
+import './style.css';
 
 export default function Main(props) {
   const renderDaysOfWeek = () => {
-    const dayOfWeek = daysOfWeeks.map((item, index) => {
-      return (
-        <div className="day" key={index}>
-          {item}
-        </div>
-      );
-    });
+    const dayOfWeek = daysOfWeeks.map((item, index) => (
+      <div className="day" key={index}>
+        {item}
+      </div>
+    ));
     return dayOfWeek;
   };
 
@@ -23,10 +21,8 @@ export default function Main(props) {
           <div className="month">{props.onSearchingMonth()}</div>
           <div className="arrow-wrapper">
             <div
-              className="arrow arrow-up"
-              onClick={props.onPreviousMonth}
-            ></div>
-            <div className="arrow arrow-down" onClick={props.onNextMonth}></div>
+              className="arrow arrow-up" onClick={props.onPreviousMonth} />
+            <div className="arrow arrow-down" onClick={props.onNextMonth} />
           </div>
         </div>
         <div className="days-of-week-wrapper">{renderDaysOfWeek()}</div>
@@ -37,8 +33,7 @@ export default function Main(props) {
         arrayOfCurrentDays={props.arrayOfCurrentDays}
         arrOfPrevDaysForCalendar={props.arrOfPrevDaysForCalendar}
         arrayOfNextDaysForCalendar={props.arrayOfNextDaysForCalendar}
-        onActualDay={props.onActualDay}
-      />
+        onActualDay={props.onActualDay} />
     </div>
   );
 }
