@@ -1,8 +1,8 @@
 import { locationRequest, locationSuccess, locationFail } from './actions';
 import { GEOLOCATION_KEY } from '../../constants';
-import { createTemplateObjectWithLocation } from './helpers'
+import { createTemplateObjectWithLocation } from './helpers';
 
-const getUserLocation = () => async (dispatch) => {
+const getUserLocation = () => async dispatch => {
   try {
     dispatch(locationRequest());
     const urlLocation = `https://ipinfo.io/json?token=${GEOLOCATION_KEY}`;
@@ -14,7 +14,5 @@ const getUserLocation = () => async (dispatch) => {
     dispatch(locationFail(error));
   }
 };
-
-
 
 export { getUserLocation };

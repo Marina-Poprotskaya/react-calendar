@@ -15,8 +15,7 @@ export default function MainCalendar(props) {
         arrayOfCurrentDays={props.arrayOfCurrentDays}
         arrOfPrevDaysForCalendar={props.arrOfPrevDaysForCalendar}
         arrayOfNextDaysForCalendar={props.arrayOfNextDaysForCalendar}
-        onActualDay={props.onActualDay}
-      />
+        onActualDay={props.onActualDay} />
     </div>
   );
 }

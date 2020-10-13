@@ -5,12 +5,11 @@ import Loader from '../loader/components';
 import './style.css';
 
 export default function WeatherAndLocation() {
-
-    return(
-        <div className='weather-location-wrapper'>
-            <Loader />
-            <Location />
-            <Weather />
-        </div>
-    )
-} 
+  return (
+    <div className="weather-location-wrapper">
+      <Loader />
+      <Location />
+      <Weather />
+    </div>
+  );
+}

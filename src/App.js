@@ -1,9 +1,9 @@
 import React, { useState, useCallback } from 'react';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import MainCalendar from './components/calendarWrapper/components';
 import { months, numberOfCells } from './constants';
 import NavBar from './components/navbar/components';
 import WeatherAndLocation from './components/weatherAndLocation/component';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import './App.css';
 
@@ -15,32 +15,30 @@ function App() {
 
   const handlePreviousMonth = () => {
     if (month <= 0) {
-      setYear((prevYear) => prevYear - 1);
+      setYear(prevYear => prevYear - 1);
       setMonth(11);
     } else {
-      setMonth((prevMonth) => prevMonth - 1);
+      setMonth(prevMonth => prevMonth - 1);
     }
   };
 
   const handleNextMonth = () => {
     if (month >= 11) {
-      setYear((prevYear) => prevYear + 1);
+      setYear(prevYear => prevYear + 1);
       setMonth(0);
     } else {
-      setMonth((prevMonth) => prevMonth + 1);
+      setMonth(prevMonth => prevMonth + 1);
     }
   };
 
-  const getActualMonths = () =>
-    `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+  const getActualMonths = () => `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
 
   const getSearchingMonth = () => `${months[month]} ${year}`;
 
   const currentDay = date.getDate();
   const previousMonth = month - 1;
 
-  const getDaysInMonth = (year, month) =>
-    new Date(year, month + 1, 0).getDate();
+  const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
 
   const daysInCurrentMonth = getDaysInMonth(year, month);
   const daysInPreviousMonth = getDaysInMonth(year, previousMonth);
@@ -55,13 +53,13 @@ function App() {
   ].map((_, i) => ++i);
 
   const isActualDay = useCallback(
-    (index) => {
+    index => {
       const actualMonth = date.getMonth();
       const actualYear = date.getFullYear();
       return !!(
-        index === currentDay - 1 &&
-        actualMonth === month &&
-        actualYear === year
+        index === currentDay - 1
+        && actualMonth === month
+        && actualYear === year
       );
     },
     [month, currentDay, year, date],
@@ -84,8 +82,7 @@ function App() {
             arrayOfCurrentDays={arrayOfCurrentDays}
             arrOfPrevDaysForCalendar={arrOfPrevDaysForCalendar}
             arrayOfNextDaysForCalendar={arrayOfNextDaysForCalendar}
-            onActualDay={isActualDay}
-          />
+            onActualDay={isActualDay} />
         </Route>
       </div>
     </Router>
