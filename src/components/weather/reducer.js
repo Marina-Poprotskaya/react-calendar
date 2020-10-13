@@ -4,13 +4,15 @@ import {
     WEATHER_FAIL,
   } from '../../constants.js';
 
-  
   const initialState = {
+    country: 'Unknown',
+    city: 'Unknown',
     description: 'Unknown',
     temperature: 0,
     humidity: 0,
     windDirection: 'Unknown',
-    windSpeed: 0
+    windSpeed: 0,
+    isLoading: false,
 };
   
   function weatherReducer(state = initialState, action) {

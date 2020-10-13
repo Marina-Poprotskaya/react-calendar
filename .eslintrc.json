@@ -6,20 +6,9 @@
     "browser": true,
     "jest": true
   },
-  "settings": {
-    "react": {
-      "version": "detect"
-    },
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
-      }
-    }
-  },
   "rules": {
     "arrow-parens": ["error", "as-needed"],
     "semi": "error",
-    "prefer-destructuring": "error",
     "max-len": [
       "warn",
       {
@@ -30,7 +19,6 @@
     ],
     "no-unused-vars": "warn",
     "operator-linebreak": "warn",
-    "react-hooks/rules-of-hooks": "error",
     "react/jsx-closing-tag-location": 2,
     "react/jsx-closing-bracket-location": [
       2,
@@ -54,13 +42,6 @@
     ],
     "jsx-quotes": ["error", "prefer-double"],
     "comma-dangle": [2, "always-multiline"],
-    "prefer-const": [
-      "error",
-      {
-        "destructuring": "any",
-        "ignoreReadBeforeAssign": false
-      }
-    ],
     "react/prop-types": [0],
     "react/jsx-props-no-spreading": "off",
     "import/no-unresolved": "off",

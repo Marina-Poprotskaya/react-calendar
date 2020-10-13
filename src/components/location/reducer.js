@@ -8,6 +8,7 @@ import {
   const initialState = {
         country: 'Unknown',
         city: 'Unknown',
+        isLoading: false,
   };
   
   function locationReducer(state = initialState, action) {

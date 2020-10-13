@@ -1,6 +1,8 @@
 const createTemplateObjectWithWeather = (data) => {
     const weatherData = data.data[0];
     const dataAboutWeather = {
+        country: data.country_code,
+        city: data.city_name,
         description: weatherData.weather.description,
         temperature: weatherData.temp,
         humidity: weatherData.rh,
@@ -10,5 +12,5 @@ const createTemplateObjectWithWeather = (data) => {
     return dataAboutWeather;
   }
 
-  
+ 
   export { createTemplateObjectWithWeather };
