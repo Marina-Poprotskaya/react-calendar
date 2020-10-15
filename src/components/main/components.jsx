@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Calendar from '../calendar/components';
-import { daysOfWeeks } from '../../constants';
+import { DAYS_OF_WEEK } from '../../constants';
 import './style.css';
 
 export default function Main(props) {
   const renderDaysOfWeek = () => {
-    const dayOfWeek = daysOfWeeks.map((item, index) => (
+    const dayOfWeek = DAYS_OF_WEEK.map((item, index) => (
       <div className="day" key={index}>
         {item}
       </div>
@@ -30,9 +30,9 @@ export default function Main(props) {
       <Calendar
         month={props.month}
         year={props.year}
-        arrayOfCurrentDays={props.arrayOfCurrentDays}
-        arrOfPrevDaysForCalendar={props.arrOfPrevDaysForCalendar}
-        arrayOfNextDaysForCalendar={props.arrayOfNextDaysForCalendar}
+        currentMonthDays={props.currentMonthDays}
+        prevMonthDaysForCalendar={props.prevMonthDaysForCalendar}
+        nextMonthDaysForCalendar={props.nextMonthDaysForCalendar}
         onActualDay={props.onActualDay} />
     </div>
   );

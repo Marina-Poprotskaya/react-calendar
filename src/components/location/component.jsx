@@ -6,22 +6,22 @@ import './style.css';
 
 export default function Location() {
   const dispatch = useDispatch();
-  const geolocation = useSelector(state => state.location);
-  const location = useSelector(state => state.weather);
+  const locationAfterFirstLoading = useSelector(state => state.location);
+  const locationAfterSearching = useSelector(state => state.weather);
 
   const [city, setCity] = useState('Unknown');
   const [country, setCountry] = useState('Unknown');
 
   useEffect(() => {
     dispatch(getUserLocation());
-    setCity(geolocation.city);
-    setCountry(geolocation.country);
-  }, [dispatch, geolocation.city, geolocation.country]);
+    setCity(locationAfterFirstLoading.city);
+    setCountry(locationAfterFirstLoading.country);
+  }, [dispatch, locationAfterFirstLoading.city, locationAfterFirstLoading.country]);
 
   useEffect(() => {
-    setCity(location.city);
-    setCountry(location.country);
-  }, [location.city, location.country]);
+    setCity(locationAfterSearching.city);
+    setCountry(locationAfterSearching.country);
+  }, [locationAfterSearching.city, locationAfterSearching.country]);
 
   const handleSubmit = e => {
     e.preventDefault();

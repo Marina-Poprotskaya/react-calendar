@@ -1,4 +1,4 @@
-export const months = [
+export const MONTH = [
   'January',
   'February',
   'March',
@@ -13,12 +13,12 @@ export const months = [
   'December',
 ];
 
-export const daysOfWeeks = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+export const DAYS_OF_WEEK = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
 const NUMBER_OF_DAYS_IN_WEEK = 7;
 const NUMBER_OF_RAWS = 6;
 
-export const numberOfCells = NUMBER_OF_DAYS_IN_WEEK * NUMBER_OF_RAWS;
+export const NUMBER_OF_CELLS = NUMBER_OF_DAYS_IN_WEEK * NUMBER_OF_RAWS;
 
 export const LOCATION_REQUEST = 'LOCATION REQUEST';
 export const LOCATION_SUCCESS = 'LOCATION SUCCESS';
